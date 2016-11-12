@@ -3,6 +3,17 @@
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
             <title>Yelp OAuth Example</title>
+            <style type="text/css">
+            h1 {    text-align: center; font-size: 40px; color: white;}
+             button, div, form, input {
+            margin: 10px;
+                }
+        body { background-image: url("assets/images/background-image.jpg"); color : black;}
+
+        #giphy-form { font-size: 25px; }
+        #outerDiv { font-size: 20px; }
+        #addgifs{font-size: 20px;}
+    </style>
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
             <script type="text/javascript" src="yelp1.js"></script>
             <script type="text/javascript" src="yelp2.js"></script>
@@ -15,68 +26,75 @@
 
 
 
-            function eventlistener()
-    {
+    //         function eventlistener()
+    // {
         
-        $('#getResults').on('click', function()
+    //     $('#getResults').on('click', function()
 
-        {
-             near = $('#truck-input').val().trim();
+    //     {
+    //          near = $('#truck-input').val().trim();
 
-             console.log(near);
+    //          console.log(near);
 
-        })
+    //     })
 
-    }
+    // }
 
-    eventlistener();
+    //eventlistener();
+
+  //  $(document).ready(function(){
 
             function cb(data) {        
-                    //console.log("cb: " + JSON.stringify(data));
+                    console.log("cb: " + JSON.stringify(data));
                     //console.log( "data : " + JSON.stringify(data));
                      console.log( "data : " + JSON.stringify(data.businesses[0].rating));
                      console.log( "data : " + JSON.stringify(data.businesses[0].location));
+                     console.log( "latitude : " + JSON.stringify(data.businesses[0].location.coordinate.latitude));
+                     console.log( "longitude : " + JSON.stringify(data.businesses[0].location.coordinate.longitude));
+
+
                      console.log( "data : " + JSON.stringify(data.businesses[0].id));
                      console.log( "data : " + JSON.stringify(data.businesses[0].price));
                      console.log( "data : " + JSON.stringify(data.businesses[0].image_url));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].rating_img_url));
 
 
                      for (var i = 0; i<10; i++)
                 {
 
-
                     resultObject = 
 
-                        {
-
-                        id: data.businesses[i].id, 
+                    {   id: data.businesses[i].id, 
                         resultImage: data.businesses[i].image_url,
                         rating : data.businesses[i].rating,
-                        location : data.businesses[i].location
+                        ratingImg : data.businesses[i].rating_img_url,
+                        location : data.businesses[i].location.display_address
+                    };
 
-                    
+                    var image1 = $('<img>').attr('src', resultObject.resultImage);
 
-                        };
-
-                    var image = $('<img>');
-
-                    image.attr('src', resultObject.resultImage);
+                    var image2 = $('<img>').attr('src',resultObject.ratingImg);
 
                     resultArray.push(resultObject);
 
-                   
-
                     
                     titleDiv = $('<div>').append(resultObject.id);
-                    imgDiv = $('<div>').append(image);
+                    imgDiv = $('<div>').append(image1);
                     ratingDiv = $('<div>').append("Rating: " + resultObject.rating);
+                    ratingImgDiv = $('<div>').append(image2);
                     locationDiv = $('<div>').append("Location: " + resultObject.location);
 
-
-                    $('#displayResults').append(titleDiv,imgDiv,ratingDiv, locationDiv);
+                    $('#displayResults').append(titleDiv,imgDiv,ratingDiv, ratingImgDiv, locationDiv);
  
                 }
             }
+
+
+             // $('.getResults').on('click', function()
+
+             //    {
+
+             //        debugger;
             
                 var auth = {
                     consumerKey : "tdDeaUZsKmwWPlAHcAXrBQ",
@@ -87,12 +105,17 @@
                     accessTokenSecret : "NGYjH8ZYKU-lSjHuD_vFTfqMsvg",
                     serviceProvider : {
                         signatureMethod : "HMAC-SHA1"
-                    }
+                                      }
                 };
         
+                    
+               // near = $('#truck-input').val().trim();
+
+               // console.log(near);
+
                 var terms = 'Food Trucks';
-               // var near = 'Los+Angeles';
-        
+                var near = 'Los'+'Angeles';
+
                 var accessor = {
                     consumerSecret : auth.consumerSecret,
                     tokenSecret : auth.accessTokenSecret
@@ -133,6 +156,7 @@
                                     console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                         }
                 );
+
         
             </script>
         </head>
@@ -141,7 +165,7 @@
         <form id="find-form">
           <label for="truck-input"> <strong>Find your food-truck</strong></label>
           <input type="text" id="truck-input"><br>
-          <input id="getResults" type="submit" value="Submit">
+          <input class= "getResults" type="submit" value="Submit">
         </form>
 
 
