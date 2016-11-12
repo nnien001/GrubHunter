@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1> YELP API CALL </h1>
+
+<div id = "message">  For msg Return </div>
+
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+	$.ajax({
+  method: "POST",
+  url: "https://api.yelp.com/oauth2/token",
+  data: { grant_type: "authorization_code", 
+  client_id: "9zcyODvFnmBzEm-GEurENQ", 
+  client_secret:"oPKfBe6ftSMzFAgkEQH9x0URC39pfb3z1FtecMOjmSttLBZlEID2ZZX4xNrDEAJ0"}
+})
+  .done(function( msg ) {
+  
+    console.log(msg);
+
+    $('#message').text(msg.access_token);
+
+
+
+  });
+
+
+</script>
+
+
+</body>
+</html>
+
