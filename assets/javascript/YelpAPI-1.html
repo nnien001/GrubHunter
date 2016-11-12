@@ -15,21 +15,23 @@
 
 
 
-            function eventlistener()
-    {
+    //         function eventlistener()
+    // {
         
-        $('#getResults').on('click', function()
+    //     $('#getResults').on('click', function()
 
-        {
-             near = $('#truck-input').val().trim();
+    //     {
+    //          near = $('#truck-input').val().trim();
 
-             console.log(near);
+    //          console.log(near);
 
-        })
+    //     })
 
-    }
+    // }
 
-    eventlistener();
+    //eventlistener();
+
+    $(document).ready(function(){
 
             function cb(data) {        
                     //console.log("cb: " + JSON.stringify(data));
@@ -44,19 +46,13 @@
                      for (var i = 0; i<10; i++)
                 {
 
-
                     resultObject = 
 
-                        {
-
-                        id: data.businesses[i].id, 
+                    {   id: data.businesses[i].id, 
                         resultImage: data.businesses[i].image_url,
                         rating : data.businesses[i].rating,
                         location : data.businesses[i].location
-
-                    
-
-                        };
+                    };
 
                     var image = $('<img>');
 
@@ -64,19 +60,23 @@
 
                     resultArray.push(resultObject);
 
-                   
-
                     
                     titleDiv = $('<div>').append(resultObject.id);
                     imgDiv = $('<div>').append(image);
                     ratingDiv = $('<div>').append("Rating: " + resultObject.rating);
                     locationDiv = $('<div>').append("Location: " + resultObject.location);
 
-
                     $('#displayResults').append(titleDiv,imgDiv,ratingDiv, locationDiv);
  
                 }
             }
+
+
+             $('.getResults').on('click', function()
+
+                {
+
+                    debugger;
             
                 var auth = {
                     consumerKey : "tdDeaUZsKmwWPlAHcAXrBQ",
@@ -86,13 +86,17 @@
                     // You wouldn't actually want to expose your access token secret like this in a real application.
                     accessTokenSecret : "NGYjH8ZYKU-lSjHuD_vFTfqMsvg",
                     serviceProvider : {
-                        signatureMethod : "HMAC-SHA1"
+                    signatureMethod : "HMAC-SHA1"
                     }
                 };
         
+                    
+                  near = $('#truck-input').val().trim();
+
+                console.log(near);
+
                 var terms = 'Food Trucks';
-               // var near = 'Los+Angeles';
-        
+
                 var accessor = {
                     consumerSecret : auth.consumerSecret,
                     tokenSecret : auth.accessTokenSecret
@@ -125,6 +129,8 @@
                     'jsonpCallback' : 'cb',
                     'cache': true
                 })
+
+
                 .done(function(data, textStatus, jqXHR) {
                       //  console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                     }
@@ -133,6 +139,12 @@
                                     console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                         }
                 );
+
+                // return false;
+
+                });
+
+        });
         
             </script>
         </head>
@@ -141,7 +153,7 @@
         <form id="find-form">
           <label for="truck-input"> <strong>Find your food-truck</strong></label>
           <input type="text" id="truck-input"><br>
-          <input id="getResults" type="submit" value="Submit">
+          <input class= "getResults" type="submit" value="Submit">
         </form>
 
 
