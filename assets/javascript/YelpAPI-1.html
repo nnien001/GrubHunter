@@ -2,105 +2,51 @@
         <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
-            <title>Yelp OAuth Example</title>
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+            <title>Yelp API</title>
+
+            <style>
+              #outerDiv {
+                border: 2px solid blue;
+                margin: 2px;
+                padding: 2px;
+                  }
+
+             </style>
+
+        </head>
+        <body>
+
+        <form id="find-form">
+          <label for="truck-input"> <strong>Find your food-truck</strong></label>
+          <input type="text" id="zipCodeInput"><br>
+          <input id= "getResults" type="submit" value="Submit">
+        </form>
+
+  <div id="displayResults"></div>
+
+        </body>
+
+         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
             <script type="text/javascript" src="yelp1.js"></script>
             <script type="text/javascript" src="yelp2.js"></script>
             <script type="text/javascript">
 
-            var resultArray = new Array;
-
+            var resultArray;
+            var divArray;
             var near; 
+            var num;
 
+                $('#getResults').on('click', function(){
 
+                    resultArray = new Array;
+                    divArray = new Array;
 
-
-    //         function eventlistener()
-    // {
-        
-    //     $('#getResults').on('click', function()
-
-    //     {
-    //          near = $('#truck-input').val().trim();
-
-    //          console.log(near);
-
-    //     })
-
-    // }
-
-    //eventlistener();
-
-    $(document).ready(function(){
-
-            function cb(data) {        
-                    //console.log("cb: " + JSON.stringify(data));
-                    //console.log( "data : " + JSON.stringify(data));
-                     console.log( "data : " + JSON.stringify(data.businesses[0].rating));
-                     console.log( "data : " + JSON.stringify(data.businesses[0].location));
-                     console.log( "data : " + JSON.stringify(data.businesses[0].id));
-                     console.log( "data : " + JSON.stringify(data.businesses[0].price));
-                     console.log( "data : " + JSON.stringify(data.businesses[0].image_url));
-
-
-                     for (var i = 0; i<10; i++)
-                {
-
-                    resultObject = 
-
-                    {   id: data.businesses[i].id, 
-                        resultImage: data.businesses[i].image_url,
-                        rating : data.businesses[i].rating,
-                        location : data.businesses[i].location
-                    };
-
-                    var image = $('<img>');
-
-                    image.attr('src', resultObject.resultImage);
-
-                    resultArray.push(resultObject);
-
-                    
-                    titleDiv = $('<div>').append(resultObject.id);
-                    imgDiv = $('<div>').append(image);
-                    ratingDiv = $('<div>').append("Rating: " + resultObject.rating);
-                    locationDiv = $('<div>').append("Location: " + resultObject.location);
-
-                    $('#displayResults').append(titleDiv,imgDiv,ratingDiv, locationDiv);
- 
-                }
-            }
-
-
-             $('.getResults').on('click', function()
-
-                {
-
-                    debugger;
-            
-                var auth = {
-                    consumerKey : "tdDeaUZsKmwWPlAHcAXrBQ",
-                    consumerSecret : "Mc5OMuJ5LUzJ4H8i7olOPE0eBxo",
-                    accessToken : "vxc5hq9rwljvRnhke3uz08t3LPTvTKIt",
-                    // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
-                    // You wouldn't actually want to expose your access token secret like this in a real application.
-                    accessTokenSecret : "NGYjH8ZYKU-lSjHuD_vFTfqMsvg",
-                    serviceProvider : {
-                    signatureMethod : "HMAC-SHA1"
-                    }
-                };
-        
-                    
-                  near = $('#truck-input').val().trim();
+                // This line of code will grab the input from the textbox
+                near = $('#zipCodeInput').val().trim();
 
                 console.log(near);
 
                 var terms = 'Food Trucks';
-
-                var accessor = {
-                    consumerSecret : auth.consumerSecret,
-                    tokenSecret : auth.accessTokenSecret
-                };
 
                 var parameters = [];
                 parameters.push(['term', terms]);
@@ -110,26 +56,27 @@
                 parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
                 parameters.push(['oauth_token', auth.accessToken]);
                 parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
-        
+
                 var message = {
                     'action' : 'https://api.yelp.com/v2/search',
                     'method' : 'GET',
                     'parameters' : parameters
                 };
-        
+
+
                 OAuth.setTimestampAndNonce(message);
                 OAuth.SignatureMethod.sign(message, accessor);
         
                 var parameterMap = OAuth.getParameterMap(message.parameters);
                     
-                $.ajax({
+
+                 $.ajax({
                     'url' : message.action,
                     'data' : parameterMap,
                     'dataType' : 'jsonp',
                     'jsonpCallback' : 'cb',
                     'cache': true
                 })
-
 
                 .done(function(data, textStatus, jqXHR) {
                       //  console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
@@ -139,29 +86,131 @@
                                     console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                         }
                 );
+                  return false;
+                })
 
-                // return false;
+             
+                function clicklistener() {
+                
+                              $(".imgDivClass").on("click",function()
 
-                });
+                              {
+                                    window.open(resultArray[$(this).attr("data-name")].link,'_blank');
+                                    
+                              });
+                        
+               }
 
-        });
+            function cb(data) {        
+                    console.log("cb: " + JSON.stringify(data));
+                    //console.log( "data : " + JSON.stringify(data));
+                    console.log( "data : " + JSON.stringify(data.businesses.length));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].rating));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].location));
+                     console.log( "latitude : " + JSON.stringify(data.businesses[0].location.coordinate.latitude));
+                     console.log( "longitude : " + JSON.stringify(data.businesses[0].location.coordinate.longitude));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].id));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].price));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].image_url));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].rating_img_url));
+
+
+                      $('#displayResults').empty();
+
+                      if (data.businesses.length <10 )
+                      {
+                        num = data.businesses.length;
+                      } 
+
+                      else  
+                      {
+                        num = 10;
+                      }
+
+                     for (var i = 0; i<num; i++)
+                      {
+                        resultObject = 
+
+                         {  id: data.businesses[i].id, 
+                            resultImage: data.businesses[i].image_url,
+                            rating : data.businesses[i].rating,
+                            ratingImg : data.businesses[i].rating_img_url,
+                            location : data.businesses[i].location.display_address,
+                            ratingDesc: data.businesses[i].snippet_text,
+                            link: data.businesses[i].mobile_url,
+                            foodCategory: data.businesses[i].categories[i][i],
+                            phone: data.businesses[i].display_phone
+                         };
+
+                    var businessName = resultObject.id;
+                        $("businessName").addClass("bName");
+
+
+                    var image1 = $('<img class = "imgDivClass">').attr('src', resultObject.resultImage);
+                        image1.attr('data-name', i);  
+                        console.log(image1.attr('data-name'));
+                        $('.imgDivClass').css({"width":"270px", "height":"180px"});
+
+                    var image2 = $('<img>').attr('src',resultObject.ratingImg);
+
+                    console.log( "URL : " + resultObject.link);
+
+                    resultArray.push(resultObject);
+
+
+
+                   divArray[i] = $("<div class = 'titleDivClass'>").append(businessName);
+
+          
+                    $('.titleDivClass').css({"text-transform": "uppercase", "font-weight":"bold"});
+
+
+                    imgDiv = $("<div class = 'wrapping' >").append(image1);
+                   // $('.titleDivClass').append(imgDiv);
+
+                    ratingDiv = $("<div class = 'wrapping' >").append("Rating: " + resultObject.rating);
+                   //  $('.titleDivClass').append(ratingDiv);
+                    ratingImgDiv = $("<div class = 'wrapping' >").append(image2);
+                    // $('.titleDivClass').append(ratingImgDiv);
+                    locationDiv = $("<div class = 'wrapping' >").append("Location: " + resultObject.location);
+                    // $('.titleDivClass').append(locationDiv);
+                    ratingDescDiv = $("<div class = 'wrapping' >").append("What People Said: " + resultObject.ratingDesc);
+                    // $('.titleDivClass').append(ratingDescDiv);
+                    categoryDiv = $("<div class = 'wrapping' >").append("Food Category: " + resultObject.foodCategory);
+
+                    phoneDiv = $("<div class = 'wrapping' >").append("Phone #: " + resultObject.phone);
+                    //s $('.titleDivClass').append(categoryDiv);
+                  //  $("p").wrapAll("<div></div>");
+                    // $( ".wrapping" ).wrapAll( '<div id="outerDiv"></div>' );
+
+                      $('#displayResults').append(divArray[i],imgDiv, ratingDiv, ratingImgDiv,locationDiv, phoneDiv,ratingDescDiv,categoryDiv);
+
+                    
+                }
+
+
+
+                clicklistener();
+
+
+            }
+                var auth = {
+                    consumerKey : "tdDeaUZsKmwWPlAHcAXrBQ",
+                    consumerSecret : "Mc5OMuJ5LUzJ4H8i7olOPE0eBxo",
+                    accessToken : "vxc5hq9rwljvRnhke3uz08t3LPTvTKIt",
+                    // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+                    // You wouldn't actually want to expose your access token secret like this in a real application.
+                    accessTokenSecret : "NGYjH8ZYKU-lSjHuD_vFTfqMsvg",
+                    serviceProvider : {
+                        signatureMethod : "HMAC-SHA1"
+                                      }
+                };
         
+                var accessor = {
+                    consumerSecret : auth.consumerSecret,
+                    tokenSecret : auth.accessTokenSecret
+                };
+
             </script>
-        </head>
-        <body>
 
-        <form id="find-form">
-          <label for="truck-input"> <strong>Find your food-truck</strong></label>
-          <input type="text" id="truck-input"><br>
-          <input class= "getResults" type="submit" value="Submit">
-        </form>
-
-
-  <div id="displayResults"></div>
-
-
-            
-
-
-        </body>
     </html>

@@ -1,0 +1,166 @@
+<html>
+        <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+            <title>Yelp OAuth Example</title>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+            <script type="text/javascript" src="yelp1.js"></script>
+            <script type="text/javascript" src="yelp2.js"></script>
+            <script type="text/javascript">
+
+            var resultArray = new Array;
+
+            var near; 
+
+
+
+
+    //         function eventlistener()
+    // {
+        
+    //     $('#getResults').on('click', function()
+
+    //     {
+    //          near = $('#truck-input').val().trim();
+
+    //          console.log(near);
+
+    //     })
+
+    // }
+
+    //eventlistener();
+
+  //  $(document).ready(function(){
+
+            function cb(data) {        
+                    console.log("cb: " + JSON.stringify(data));
+                    //console.log( "data : " + JSON.stringify(data));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].rating));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].location));
+                     console.log( "latitude : " + JSON.stringify(data.businesses[0].location.coordinate.latitude));
+                     console.log( "longitude : " + JSON.stringify(data.businesses[0].location.coordinate.longitude));
+
+
+                     console.log( "data : " + JSON.stringify(data.businesses[0].id));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].price));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].image_url));
+                     console.log( "data : " + JSON.stringify(data.businesses[0].rating_img_url));
+
+
+                     for (var i = 0; i<10; i++)
+                {
+
+                    resultObject = 
+
+                    {   id: data.businesses[i].id, 
+                        resultImage: data.businesses[i].image_url,
+                        rating : data.businesses[i].rating,
+                        ratingImg : data.businesses[i].rating_img_url,
+                        location : data.businesses[i].location.display_address
+                    };
+
+                    var image1 = $('<img>').attr('src', resultObject.resultImage);
+
+                    var image2 = $('<img>').attr('src',resultObject.ratingImg);
+
+                    resultArray.push(resultObject);
+
+                    
+                    titleDiv = $('<div>').append(resultObject.id);
+                    imgDiv = $('<div>').append(image1);
+                    ratingDiv = $('<div>').append("Rating: " + resultObject.rating);
+                    ratingImgDiv = $('<div>').append(image2);
+                    locationDiv = $('<div>').append("Location: " + resultObject.location);
+
+                    $('#displayResults').append(titleDiv,imgDiv,ratingDiv, ratingImgDiv, locationDiv);
+ 
+                }
+            }
+
+                var auth = {
+                    consumerKey : "tdDeaUZsKmwWPlAHcAXrBQ",
+                    consumerSecret : "Mc5OMuJ5LUzJ4H8i7olOPE0eBxo",
+                    accessToken : "vxc5hq9rwljvRnhke3uz08t3LPTvTKIt",
+                    // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+                    // You wouldn't actually want to expose your access token secret like this in a real application.
+                    accessTokenSecret : "NGYjH8ZYKU-lSjHuD_vFTfqMsvg",
+                    serviceProvider : {
+                        signatureMethod : "HMAC-SHA1"
+                                      }
+                };
+        
+                    
+               // near = $('#truck-input').val().trim();
+
+               // console.log(near);
+
+                var terms = 'Food Trucks';
+                var near = 'Los'+'Angeles';
+
+                var accessor = {
+                    consumerSecret : auth.consumerSecret,
+                    tokenSecret : auth.accessTokenSecret
+                };
+
+                var parameters = [];
+                parameters.push(['term', terms]);
+                parameters.push(['location', '90042']);
+                parameters.push(['callback', 'cb']);
+                parameters.push(['oauth_consumer_key', auth.consumerKey]);
+                parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+                parameters.push(['oauth_token', auth.accessToken]);
+                parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+        
+                var message = {
+                    'action' : 'https://api.yelp.com/v2/search',
+                    'method' : 'GET',
+                    'parameters' : parameters
+                };
+        
+                OAuth.setTimestampAndNonce(message);
+                OAuth.SignatureMethod.sign(message, accessor);
+        
+                var parameterMap = OAuth.getParameterMap(message.parameters);
+                    
+                $.ajax({
+                    'url' : message.action,
+                    'data' : parameterMap,
+                    'dataType' : 'jsonp',
+                    'jsonpCallback' : 'cb',
+                    'cache': true
+                })
+
+
+                .done(function(data, textStatus, jqXHR) {
+                      //  console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
+                    }
+                )
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                                    console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
+                        }
+                );
+
+
+              
+
+        
+            </script>
+        </head>
+        <body>
+
+        <form id="find-form">
+          <label for="truck-input"> <strong>Find your food-truck</strong></label>
+          <input type="text" id="truck-input"><br>
+          <input class= "getResults" type="submit" value="Submit">
+        </form>
+
+
+  <div id="displayResults"></div>
+
+
+            
+
+
+        </body>
+    </html>
