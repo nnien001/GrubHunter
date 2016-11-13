@@ -2,3 +2,7 @@
 	padding: 2px 15px;
 	height: 70px;
 }
+
+.slide {
+	max-height: 200px;
+}
