@@ -16,6 +16,8 @@
                 #addgifs{font-size: 20px;}
                 #map {height: 400px; width: 100%; }
 
+
+
             </style>
         </head>
         <body>
@@ -75,8 +77,9 @@
 
                         resultArray.push(resultObject);
 
-                        
-                        titleDiv = $('<div>').append(resultObject.id);
+                        titleDiv = $('<div>').text((i + 1) +  ": ");
+
+                        titleDiv.append(resultObject.id);
                         imgDiv = $('<div>').append(image1);
                         ratingDiv = $('<div>').append("Rating: " + resultObject.rating);
                         ratingImgDiv = $('<div>').append(image2);
@@ -84,7 +87,7 @@
 
                         $('#displayResults').append(titleDiv,imgDiv,ratingDiv, ratingImgDiv, locationDiv);
 
-                        buildMarker(resultObject.latitude, resultObject.longitude);
+                        buildMarker(resultObject.latitude, resultObject.longitude, (i+1).toString());
                     }
                 }
 
@@ -163,7 +166,7 @@
                         });
                     }
 
-                    function buildMarker(latitude, longitude) {
+                    function buildMarker(latitude, longitude, counter) {
                         console.log("buildmarker: ", latitude, longitude);
                         var pos = {
                             lat: latitude,
@@ -172,8 +175,11 @@
 
                         var marker = new google.maps.Marker({
                             position: pos,
-                            map: map
+                            map: map,
+                            label: { text: counter }
+
                         });
+
                     }
         
             </script>
