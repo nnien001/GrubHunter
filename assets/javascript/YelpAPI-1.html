@@ -84,12 +84,23 @@
                 })
 
                 function clicklistener() {
+
+
+                    //$('.class1, .class2').click(some_function);
                 
-                              $(".imgDivClass").on("click",function()
+                              $('.imgDivClass1, .imgDivClass2').on("click",function()
 
                               {
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
                               });     
+
+                             $('.bName').on("click",function()
+
+                              {
+                                    console.log("you clicked on title");
+                                    window.open(resultArray[$(this).attr("data-name")].link,'_blank');
+                              });   
+
                }
 
             function cb(data) {        
@@ -125,7 +136,7 @@
                          {  id: data.businesses[i].id, 
                             resultImage: data.businesses[i].image_url,
                             rating : data.businesses[i].rating,
-                            ratingImg : data.businesses[i].rating_img_url,
+                            ratingImg : data.businesses[i].rating_img_url_large,
                             location : data.businesses[i].location.display_address,
                             ratingDesc: data.businesses[i].snippet_text,
                             link: data.businesses[i].mobile_url,
@@ -133,16 +144,25 @@
                             phone: data.businesses[i].display_phone
                          };
 
+                        resultObject.id = resultObject.id.split('-').join(' ');
+                        resultObject.id = resultObject.id.toUpperCase();
+
+        //$(names).addClass("nam");
                     var businessName = resultObject.id;
-                        $("businessName").addClass("bName");
+                       // $(resultObject.id).addClass("bName");
+                       $(businessName).addClass("bName");
+                       $(businessName).attr('data-name', i); 
+
+                        
 
 
-                    var image1 = $('<img class = "imgDivClass">').attr('src', resultObject.resultImage);
+                    var image1 = $('<img class = "imgDivClass1">').attr('src', resultObject.resultImage);
                         image1.attr('data-name', i);  
                         console.log(image1.attr('data-name'));
                       
 
-                    var image2 = $('<img>').attr('src',resultObject.ratingImg);
+                    var image2 = $('<img class = "imgDivClass2">').attr('src',resultObject.ratingImg);
+                        image2.attr('data-name', i);
 
                     console.log( "URL : " + resultObject.link);
 
