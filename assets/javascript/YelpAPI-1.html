@@ -4,14 +4,8 @@
         <meta content="utf-8" http-equiv="encoding">
             <title>Yelp API</title>
 
-            <style>
-              #outerDiv {
-                border: 2px solid blue;
-                margin: 2px;
-                padding: 2px;
-                  }
-
-             </style>
+           <!--  <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+            <link rel="stylesheet" type="text/css" href="style.css">
 
         </head>
         <body>
@@ -89,16 +83,13 @@
                   return false;
                 })
 
-             
                 function clicklistener() {
                 
                               $(".imgDivClass").on("click",function()
 
                               {
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
-                                    
-                              });
-                        
+                              });     
                }
 
             function cb(data) {        
@@ -138,7 +129,7 @@
                             location : data.businesses[i].location.display_address,
                             ratingDesc: data.businesses[i].snippet_text,
                             link: data.businesses[i].mobile_url,
-                            foodCategory: data.businesses[i].categories[i][i],
+                            foodCategory: data.businesses[i].categories[i],
                             phone: data.businesses[i].display_phone
                          };
 
@@ -149,7 +140,7 @@
                     var image1 = $('<img class = "imgDivClass">').attr('src', resultObject.resultImage);
                         image1.attr('data-name', i);  
                         console.log(image1.attr('data-name'));
-                        $('.imgDivClass').css({"width":"270px", "height":"180px"});
+                      
 
                     var image2 = $('<img>').attr('src',resultObject.ratingImg);
 
@@ -157,38 +148,32 @@
 
                     resultArray.push(resultObject);
 
-
-
                    divArray[i] = $("<div class = 'titleDivClass'>").append(businessName);
 
-          
-                    $('.titleDivClass').css({"text-transform": "uppercase", "font-weight":"bold"});
+                
+                    imgDiv = $('<div >').append(image1);
+                    divArray[i].append(imgDiv);
 
+                    ratingDiv = $("<div class = 'textclass' >").append("Rating: " + resultObject.rating);
+                    divArray[i].append(ratingDiv);
 
-                    imgDiv = $("<div class = 'wrapping' >").append(image1);
-                   // $('.titleDivClass').append(imgDiv);
-
-                    ratingDiv = $("<div class = 'wrapping' >").append("Rating: " + resultObject.rating);
-                   //  $('.titleDivClass').append(ratingDiv);
                     ratingImgDiv = $("<div class = 'wrapping' >").append(image2);
-                    // $('.titleDivClass').append(ratingImgDiv);
-                    locationDiv = $("<div class = 'wrapping' >").append("Location: " + resultObject.location);
-                    // $('.titleDivClass').append(locationDiv);
-                    ratingDescDiv = $("<div class = 'wrapping' >").append("What People Said: " + resultObject.ratingDesc);
-                    // $('.titleDivClass').append(ratingDescDiv);
-                    categoryDiv = $("<div class = 'wrapping' >").append("Food Category: " + resultObject.foodCategory);
+                    divArray[i].append(ratingImgDiv);
 
-                    phoneDiv = $("<div class = 'wrapping' >").append("Phone #: " + resultObject.phone);
-                    //s $('.titleDivClass').append(categoryDiv);
-                  //  $("p").wrapAll("<div></div>");
-                    // $( ".wrapping" ).wrapAll( '<div id="outerDiv"></div>' );
+                    locationDiv = $("<div class = 'textclass' >").append("Location: " + resultObject.location);
+                    divArray[i].append(locationDiv);
 
-                      $('#displayResults').append(divArray[i],imgDiv, ratingDiv, ratingImgDiv,locationDiv, phoneDiv,ratingDescDiv,categoryDiv);
+                    ratingDescDiv = $("<div class = 'textclass' >").append("What People Said: " + resultObject.ratingDesc);
+                    divArray[i].append(ratingDescDiv);
 
-                    
+                    categoryDiv = $("<div class = 'textclass' >").append("Food Category: " + resultObject.foodCategory);
+                     divArray[i].append(categoryDiv);
+
+                    phoneDiv = $("<div class = 'textclass' >").append("Phone #: " + resultObject.phone);
+                    divArray[i].append(phoneDiv);
+                  
+                     $('#displayResults').append(divArray[i]); 
                 }
-
-
 
                 clicklistener();
 
