@@ -19,7 +19,7 @@ $( document ).ready(function() {
                 // This line of code will grab the input from the textbox...
                 near = $('#zipCodeInput').val().trim();
 
-                initMap();
+                initMap(near);
 
                 if (near.length != 5 || isNaN(near))
 
