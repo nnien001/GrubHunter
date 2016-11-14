@@ -5,6 +5,10 @@ console.log("using yelpMain.js");
             var near; 
             var num;
 
+$( document ).ready(function() {
+
+
+
                 $('#getResults').on('click', function(){
 
                     $('#displayResults').empty();
@@ -211,3 +215,5 @@ console.log("using yelpMain.js");
                     consumerSecret : auth.consumerSecret,
                     tokenSecret : auth.accessTokenSecret
                 };
+
+                });
