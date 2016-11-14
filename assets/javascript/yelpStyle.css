@@ -1,0 +1,47 @@
+.outerDiv {
+                border: 2px solid black;
+                margin: 5px;
+                padding: 2px;
+                /*text-transform: uppercase;*/
+	 			clear: left;
+ 				max-height: 250px;
+ 				overflow: hidden;
+           }
+
+
+body {
+	font-family: arial;	
+	 }
+
+.titleDivClass
+	{
+		font-weight: bold;
+		font-size: 20px;
+		margin: 10px;
+		background-color: orange;
+		line-height: 22px;
+	}	
+
+
+.imgDivClass1 {
+
+		width:270px; 
+		height:180px;
+		float: left;
+		margin: 5px;
+		padding: 2px;
+	}
+
+.textclass 
+
+{
+	font-size: 14px;
+	font-weight: normal;
+	margin: 5px;
+	padding: 2px;
+}
+
+.imgDivClass1:hover, .imgDivClass2:hover {
+    background-color: grey;
+}
+

@@ -33,11 +33,20 @@
 
                 $('#getResults').on('click', function(){
 
+                    $('#displayResults').empty();
                     resultArray = new Array;
                     divArray = new Array;
 
                 // This line of code will grab the input from the textbox...
                 near = $('#zipCodeInput').val().trim();
+
+                if (near.length != 5 || isNaN(near))
+
+                {
+                    $('#displayResults').append(" Not a valid zip Code !");
+                    near = 0;
+                }
+
 
                 console.log(near);
 
@@ -86,8 +95,6 @@
 
                 function clicklistener() {
 
-
-                    //$('.class1, .class2').click(some_function);
                 
                               $('.imgDivClass1, .imgDivClass2').on("click",function()
 
@@ -155,8 +162,6 @@
                        $(businessName).attr('data-name', i); 
 
                         
-
-
                     var image1 = $('<img class = "imgDivClass1">').attr('src', resultObject.resultImage);
                         image1.attr('data-name', i);  
                         console.log(image1.attr('data-name'));
@@ -169,9 +174,13 @@
 
                     resultArray.push(resultObject);
 
-                   divArray[i] = $("<div class = 'titleDivClass'>").append(businessName);
+                   //divArray[i] = $("<div class = 'titleDivClass'>").append(businessName);
 
-                
+                   divArray[i] = $("<div class = 'outerDiv'>");
+
+                   businessNameDiv = $("<div class = 'titleDivClass'>").append(businessName);
+                    divArray[i].append(businessNameDiv);
+
                     imgDiv = $('<div >').append(image1);
                     divArray[i].append(imgDiv);
 
