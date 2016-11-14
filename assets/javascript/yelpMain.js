@@ -8,8 +8,9 @@ console.log("using yelpMain.js");
 $( document ).ready(function() {
 
 
-
                 $('#getResults').on('click', function(){
+                    
+
 
                     $('#displayResults').empty();
                     resultArray = new Array;
@@ -17,6 +18,8 @@ $( document ).ready(function() {
 
                 // This line of code will grab the input from the textbox...
                 near = $('#zipCodeInput').val().trim();
+
+                initMap();
 
                 if (near.length != 5 || isNaN(near))
 

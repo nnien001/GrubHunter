@@ -11,7 +11,8 @@ var la = { //our map center.
 function initMap() {
  	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 10,
-			center: la.pos
+		center: la.pos
+
 	});
 }
 
@@ -21,4 +22,19 @@ function addNewMarker(newPos, newLabel) {
 			map: map,
 			label: newLabel
 		});
+}
+
+function hideMap() {
+	$("#map").hide();
+	console.log("hiding map");
+}
+
+function showMap() {
+	$("#map").show();
+	console.log("showing map");
+}
+
+function toggleMap() {
+	$("#map").toggle();
+	console.log("toggle map");
 }
