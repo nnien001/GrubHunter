@@ -154,7 +154,9 @@ console.log("using yelpMain.js");
 
                    divArray[i] = $("<div class = 'outerDiv'>");
 
-                   businessNameDiv = $("<div class = 'titleDivClass'>").append(businessName);
+                   businessNameDiv = $("<div class = 'titleDivClass'>").text((i + 1).toString() + ". ")
+
+                   businessNameDiv.append(businessName);
                     divArray[i].append(businessNameDiv);
 
                     imgDiv = $('<div >').append(image1);
@@ -186,7 +188,7 @@ console.log("using yelpMain.js");
                       lng: resultObject.lng
                     } 
 
-                    addNewMarker(newPos, i.toString());
+                    addNewMarker(newPos, (i+1).toString());
                 }
 
                 clicklistener();
