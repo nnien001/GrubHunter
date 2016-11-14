@@ -1,3 +1,5 @@
+console.log("using yelpMain.js");
+
             var resultArray;
             var divArray;
             var near; 
