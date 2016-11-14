@@ -32,4 +32,14 @@ body {
 
 }
 
+#map {
+
+	/* you need this for the map to show up */ 
+    height: 400px;
+	width: 100%;
+}
+
+
+
+
 /*$('.titleDivClass').css({"text-transform": "uppercase", "font-weight":"bold"});*/
