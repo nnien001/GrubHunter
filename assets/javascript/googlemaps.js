@@ -1,6 +1,7 @@
 console.log("using googlemaps.js")
 
 var map = null; //to be initialized by initMap. this is a global.
+//var marker = null;
 
 var la = { //our map center.
 	name: "los angeles",
@@ -36,6 +37,7 @@ function initMap(newZip) { //initialize map the first time or center map if alre
     console.log("map hit");
   });
 
+
 }
 
 function addNewMarker(newPos, newLabel) {
@@ -44,9 +46,34 @@ function addNewMarker(newPos, newLabel) {
 			map: map,
 			label: newLabel
 		});
-    
-}
 
-/*  marker.addListener('click', function(event) {
-    console.log("marker hit");
-  });*/
+  marker.addListener('click', function(event) {
+    console.log("marker hit", newPos);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+
+      var geoPos = {
+        pos: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }
+      };
+      
+      var url = "https://www.google.com/maps/dir/" 
+                  + newPos.lat + "," + newPos.lng + "/" +geoPos.pos.lat + "," + geoPos.pos.lng; 
+
+      //console.log(url);
+      location.href=url;
+
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } 
+    else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    } 
+  });
+  
+}
