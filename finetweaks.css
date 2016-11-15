@@ -20,3 +20,10 @@
 #zipCodeInput {
 	color: black;
 }
+
+.carousel-inner .active.left {
+	left: -33%;
+}
+.carousel-inner .next {
+	left:  33%;
+}
