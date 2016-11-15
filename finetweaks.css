@@ -10,3 +10,13 @@
 #getResults {
 	margin-left: -10px;
 }
+
+#myCarousel {
+	margin-top: 70px;
+	position: relative;
+	bottom: 0;
+}
+
+#zipCodeInput {
+	color: black;
+}
