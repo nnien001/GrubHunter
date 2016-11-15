@@ -7,6 +7,10 @@ console.log("using yelpMain.js");
             var near; 
             var num;
 
+            $("body, html").animate({ 
+                        scrollTop: $('#mainNav').offset().top 
+                    }, 300);
+
 
         $('#getResults').on('click', function(){
                     
@@ -165,6 +169,11 @@ console.log("using yelpMain.js");
                       } 
 
                      addNewMarker(newPos, (i+1).toString());
+
+
+                     $("body, html").animate({ 
+                        scrollTop: $('#map').offset().top 
+                    }, 300);
                 }
 
                 clicklistener();
