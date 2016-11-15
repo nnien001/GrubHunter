@@ -1,6 +1,6 @@
 console.log("using googlemaps.js")
 
-var map; //to be initialized by initMap. this is a global.
+var map = null; //to be initialized by initMap. this is a global.
 
 var la = { //our map center.
 	name: "los angeles",
@@ -8,16 +8,20 @@ var la = { //our map center.
 };
 
 
-function initMap(newZip) {
-	geocoder = new google.maps.Geocoder();
- 	map = new google.maps.Map(document.getElementById('map'), {
+function initMap(newZip) { //initialize map the first time or center map if already initialized
+  
+  if (map == null) {
+	 geocoder = new google.maps.Geocoder();
+ 	 map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 10,
 		center: la.pos //default location so nothing breaks
+	 });
 
-	});
+  }
 
  	geocoder.geocode( { 'address': newZip}, function(results, status) {
   		if (status == 'OK') {
+
     		map.setCenter(results[0].geometry.location);
     		var marker = new google.maps.Marker({
         	map: map,
@@ -28,7 +32,9 @@ function initMap(newZip) {
   		}
 	});
 
-
+  map.addListener('click', function(event) {
+    console.log("map hit");
+  });
 
 }
 
@@ -38,32 +44,9 @@ function addNewMarker(newPos, newLabel) {
 			map: map,
 			label: newLabel
 		});
+    
 }
 
-/*var geocoder;
-var map;
-
-function initialize() {
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var mapOptions = {
-      zoom: 8,
-      center: latlng
-    }
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
-}
-
-function codeAddress() {
-var address = document.getElementById('address').value;
-geocoder.geocode( { 'address': address}, function(results, status) {
-  if (status == 'OK') {
-    map.setCenter(results[0].geometry.location);
-    var marker = new google.maps.Marker({
-        map: map,
-        position: results[0].geometry.location
-    });
-  } else {
-    alert('Geocode was not successful for the following reason: ' + status);
-  }
-});
-}*/
+/*  marker.addListener('click', function(event) {
+    console.log("marker hit");
+  });*/
