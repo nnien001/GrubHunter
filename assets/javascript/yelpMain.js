@@ -9,6 +9,12 @@
                     resultArray = new Array;
                     divArray = new Array;
 
+
+                  // To move the html to the map and yelp results div 
+                    $("body, html").animate({ 
+                        scrollTop: $('#map').offset().top 
+                    }, 300);
+
                 // This line of code will grab the input from the textbox...
                 near = $('#zipCodeInput').val().trim();
 
@@ -179,6 +185,7 @@
 
                 clicklistener();
 
+    
 
             }
                 var auth = {
