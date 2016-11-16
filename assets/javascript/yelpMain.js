@@ -9,7 +9,7 @@ console.log("using yelpMain.js");
 
             $("body, html").animate({ 
                         scrollTop: $('#mainNav').offset().top 
-                    }, 300);
+                    }, 100);
 
 
         $('#getResults').on('click', function(){
@@ -110,6 +110,8 @@ console.log("using yelpMain.js");
                             resultObject.id = resultObject.id.split('-').join(' ');
                             resultObject.id = resultObject.id.toUpperCase();
 
+
+
                         var businessName = resultObject.id;
                            // $(resultObject.id).addClass("bName");
                            $(businessName).addClass("bName");
@@ -123,6 +125,12 @@ console.log("using yelpMain.js");
 
                         var image2 = $('<img class = "imgDivClass2">').attr('src',resultObject.ratingImg);
                         image2.attr('data-name', i);
+
+
+                        var buttonDrive = $("<button class= 'driveButton'> I'm hungry Let's GO! </button>") ;
+                        buttonDrive.attr('data-name', i); // Added a data-attribute
+
+
 
                     console.log( "URL : " + resultObject.link);
 
@@ -140,11 +148,17 @@ console.log("using yelpMain.js");
                       imgDiv = $('<div >').append(image1);
                       divArray[i].append(imgDiv);
 
+                       divArray[i].append(buttonDrive);
+
                       ratingDiv = $("<div class = 'textclass' >").append("Rating: " + resultObject.rating);
                       divArray[i].append(ratingDiv);
 
                       ratingImgDiv = $("<div class = 'wrapping' >").append(image2);
                       divArray[i].append(ratingImgDiv);
+
+                      
+                     
+
 
                       locationDiv = $("<div class = 'textclass' >").append("Location: " + resultObject.location);
                       divArray[i].append(locationDiv);
@@ -160,7 +174,7 @@ console.log("using yelpMain.js");
                     
                        $('#displayResults').append(divArray[i]);
 
-                       console.log ("i'm after appending to div");
+    
 
                     //code for adding markers
                       var newPos = {
@@ -195,11 +209,37 @@ console.log("using yelpMain.js");
                 function clicklistener() 
 
                         {
+
+                              $('.driveButton').on("click",function()
+
+                              {
+                                console.log("clicked on drive");
+
+                                 var geoPos = {
+                                  pos: {
+                                    lat: 34.107728,
+                                    lng: -118.186725
+                                  }
+                                };
+
+                                var newLat = resultArray[$(this).attr("data-name")].lat;
+                                var newLng = resultArray[$(this).attr("data-name")].lng;
+                                console.log(newLat + "    " + newLng);
+      
+                               var url = "https://www.google.com/maps/dir/"+ newLat + "," + newLng + "/" +geoPos.pos.lat + "," + geoPos.pos.lng; 
+
+                              window.open(url,'_blank');
+
+                              }); 
+
+
+
                               $('.imgDivClass1, .imgDivClass2').on("click",function()
 
                               {
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
-                              });     
+                              });   
+
 
                              $('.bName').on("click",function()
 
@@ -207,6 +247,9 @@ console.log("using yelpMain.js");
                                     console.log("you clicked on title");
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
                               });   
+
+
+
 
                         }
 
