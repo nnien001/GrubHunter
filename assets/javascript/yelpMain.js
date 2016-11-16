@@ -127,7 +127,7 @@ console.log("using yelpMain.js");
                         image2.attr('data-name', i);
 
 
-                        var buttonDrive = $("<button class= 'driveButton'> I'm hungry Let's GO! </button>") ;
+                        var buttonDrive = $("<button class= 'driveButton'> Take me there!!! </button>") ;
                         buttonDrive.attr('data-name', i); // Added a data-attribute
 
 
@@ -215,18 +215,18 @@ console.log("using yelpMain.js");
                               {
                                 console.log("clicked on drive");
 
-                                 var geoPos = {
-                                  pos: {
-                                    lat: 34.107728,
-                                    lng: -118.186725
-                                  }
-                                };
+                                var currentPos = {
+                                pos: {
+                                        lat: null,
+                                        lng: null
+                                  }  
+                                }
 
                                 var newLat = resultArray[$(this).attr("data-name")].lat;
                                 var newLng = resultArray[$(this).attr("data-name")].lng;
                                 console.log(newLat + "    " + newLng);
       
-                               var url = "https://www.google.com/maps/dir/"+ newLat + "," + newLng + "/" +geoPos.pos.lat + "," + geoPos.pos.lng; 
+                               var url = "https://www.google.com/maps/dir/" + currentPos.pos.lat + "," + currentPos.pos.lng + "/" + newLat + "," + newLng;
 
                               window.open(url,'_blank');
 

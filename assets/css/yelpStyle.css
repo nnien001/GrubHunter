@@ -4,7 +4,7 @@
                 padding: 2px;
                 /*text-transform: uppercase;*/
 	 			clear: left;
- 				max-height: 270px;
+ 				max-height: 280px;
  				overflow: scroll;
            }
 
@@ -50,16 +50,18 @@ body {
 	width: 100%;
 }
 
+.imgDivClass1:hover, .imgDivClass2:hover {
+    background-color: orange;
+}
+
 .driveButton {
     height: 90px;
     width: 90px;
     font-weight: bold;
     border-radius: 100px;
     border: 1px solid blue;
-    background-color: orange;
+    /*background-color: orange;*/
     float: right;
+    background-image: url("../images/car.png");
 }
 
-.imgDivClass1:hover, .imgDivClass2:hover, .driveButton {
-    background-color: orange;
-}
