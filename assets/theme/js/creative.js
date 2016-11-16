@@ -63,14 +63,48 @@
 
 })(jQuery); // End of use strict
 
+var $el = $(".header-content-inner");
+var elHeight = $el.outerHeight();
+var elWidth = $el.outerWidth();
+
+var $wrapper = $(".header-content");
+
+$wrapper.resizable({
+  resize: doResize
+});
+
+function doResize(event, ui) {
+  
+  var scale, origin;
+    
+  scale = Math.min(
+    ui.size.width / elWidth,    
+    ui.size.height / elHeight
+  );
+  
+  $el.css({
+    transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
+  });
+  
+}
+
+var starterData = { 
+  size: {
+    width: $wrapper.width(),
+    height: $wrapper.height()
+  }
+}
+doResize(null, starterData);
+
 $('.carousel-inner .item').each(function(){
   var next = $(this).next();
-  if (!next.length) {
+  var winWidth = $(window).width();
+  if (!next.length && winWidth <= 768) {
     next = $(this).siblings(':first');
   }
   next.children(':first-child').clone().appendTo($(this));
 
-  if (next.next().length>0) {
+  if (next.next().length>0 && winWidth <= 400) {
     next.next().children(':first-child').clone().appendTo($(this));
   }
   else {
