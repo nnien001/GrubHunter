@@ -8,6 +8,12 @@ var la = { //our map center.
 	pos: {lat: 34.060815, lng: -118.447205} //gayley building
 };
 
+var currentPos = {
+  pos: {
+          lat: null,
+          lng: null
+  }  
+}
 
 function initMap(newZip) { //initialize map the first time or center map if already initialized
   
@@ -15,7 +21,7 @@ function initMap(newZip) { //initialize map the first time or center map if alre
 	 geocoder = new google.maps.Geocoder();
  	 map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 10,
-		center: la.pos //default location so nothing breaks
+		center: la.pos //default location so nothing breaks*-
 	 });
 
   }
@@ -24,6 +30,7 @@ function initMap(newZip) { //initialize map the first time or center map if alre
     markerClear();
   }
 
+  //geocode the zip
  	geocoder.geocode( { 'address': newZip}, function(results, status) { //get GPS of zip, zoom on zip.
   		if (status == 'OK') {
     		map.setCenter(results[0].geometry.location);
@@ -33,6 +40,22 @@ function initMap(newZip) { //initialize map the first time or center map if alre
   		}
 	});
 
+  //get your current coordinate
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      currentPos.pos.lat = position.coords.latitude;
+      currentPos.pos.lng = position.coords.longitude; 
+
+    }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+  } 
+  
+  else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 
 
 }
@@ -46,34 +69,15 @@ function addNewMarker(newPos, newLabel) {
 
   markerArray.push(marker);
 
+  
   marker.addListener('click', function(event) {
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-
-      var geoPos = {
-        pos: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        }
-      };
-      
-      var url = "https://www.google.com/maps/dir/"+ newPos.lat + "," + newPos.lng + "/" +geoPos.pos.lat + "," + geoPos.pos.lng; 
-
-      location.href=url;
-
-      }, function() {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-    } 
+  
+    var url = "https://www.google.com/maps/dir/" + currentPos.pos.lat + "," + currentPos.pos.lng + "/" + newPos.lat + "," + newPos.lng;
+    window.open(url);
     
-    else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-    }
-
   });
-
+  
+  
 }
 
 function setMapOnAll(map) { //typically not used other than to set to null
