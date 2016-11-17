@@ -116,11 +116,16 @@ console.log("using yelpMain.js");
                             resultObject.id = resultObject.id.toUpperCase();
 
 
+                            var businessName = $("<div>");
+                            businessName.text(resultObject.id);
+                            businessName.addClass("bName");
+                            businessName.attr('data-name', i);
 
-                        var businessName = resultObject.id;
+/*                        var businessName = resultObject.id;
                            $(resultObject.id).addClass("bName");
                            //$(businessName).addClass("bName");
                            $(businessName).attr('data-name', i); 
+*/
 
                         
                         var image1 = $('<img class = "imgDivClass1">').attr('src', resultObject.resultImage);
