@@ -1,4 +1,7 @@
 
+
+
+
 $( document ).ready(function() {
 console.log("using yelpMain.js");
 
@@ -7,9 +10,11 @@ console.log("using yelpMain.js");
             var near; 
             var num;
 
-            $("body, html").animate({ 
-                        scrollTop: $('#mainNav').offset().top 
-                    }, 300);
+             $("body, html").animate({ 
+                        scrollTop: $('#homeHeading').offset().top - 100
+                    }, 100);
+
+           
 
 
         $('#getResults').on('click', function(){
@@ -110,9 +115,11 @@ console.log("using yelpMain.js");
                             resultObject.id = resultObject.id.split('-').join(' ');
                             resultObject.id = resultObject.id.toUpperCase();
 
+
+
                         var businessName = resultObject.id;
-                           // $(resultObject.id).addClass("bName");
-                           $(businessName).addClass("bName");
+                           $(resultObject.id).addClass("bName");
+                           //$(businessName).addClass("bName");
                            $(businessName).attr('data-name', i); 
 
                         
@@ -123,6 +130,12 @@ console.log("using yelpMain.js");
 
                         var image2 = $('<img class = "imgDivClass2">').attr('src',resultObject.ratingImg);
                         image2.attr('data-name', i);
+
+
+                        var buttonDrive = $("<button class= 'driveButton'> Take me there!!! </button>") ;
+                        buttonDrive.attr('data-name', i); // Added a data-attribute
+
+
 
                     console.log( "URL : " + resultObject.link);
 
@@ -140,12 +153,15 @@ console.log("using yelpMain.js");
                       imgDiv = $('<div >').append(image1);
                       divArray[i].append(imgDiv);
 
+                       divArray[i].append(buttonDrive);
+
                       ratingDiv = $("<div class = 'textclass' >").append("Rating: " + resultObject.rating);
                       divArray[i].append(ratingDiv);
 
                       ratingImgDiv = $("<div class = 'wrapping' >").append(image2);
                       divArray[i].append(ratingImgDiv);
 
+                      
                       locationDiv = $("<div class = 'textclass' >").append("Location: " + resultObject.location);
                       divArray[i].append(locationDiv);
 
@@ -160,8 +176,7 @@ console.log("using yelpMain.js");
                     
                        $('#displayResults').append(divArray[i]);
 
-                       console.log ("i'm after appending to div");
-
+    
                     //code for adding markers
                       var newPos = {
                         lat: resultObject.lat,
@@ -192,14 +207,40 @@ console.log("using yelpMain.js");
                 })
 
 
+
                 function clicklistener() 
 
                         {
+                              $('.driveButton').on("click",function()
+
+                              {
+                                console.log("clicked on drive");
+
+                                var currentPos = {
+                                pos: {
+                                        lat: null,
+                                        lng: null
+                                  }  
+                                }
+
+                                var newLat = resultArray[$(this).attr("data-name")].lat;
+                                var newLng = resultArray[$(this).attr("data-name")].lng;
+                                console.log(newLat + "    " + newLng);
+      
+                               var url = "https://www.google.com/maps/dir/" + currentPos.pos.lat + "," + currentPos.pos.lng + "/" + newLat + "," + newLng;
+
+                              window.open(url,'_blank');
+
+                              }); 
+
+
+
                               $('.imgDivClass1, .imgDivClass2').on("click",function()
 
                               {
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
-                              });     
+                              });   
+
 
                              $('.bName').on("click",function()
 

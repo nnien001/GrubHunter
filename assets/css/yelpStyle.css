@@ -4,8 +4,8 @@
                 padding: 2px;
                 /*text-transform: uppercase;*/
 	 			clear: left;
- 				max-height: 250px;
- 				overflow: hidden;
+ 				max-height: 280px;
+ 				overflow: scroll;
            }
 
 
@@ -41,9 +41,7 @@ body {
 	padding: 2px;
 }
 
-.imgDivClass1:hover, .imgDivClass2:hover {
-    background-color: grey;
-}
+
 
 #map {
 
@@ -51,3 +49,19 @@ body {
     height: 400px;
 	width: 100%;
 }
+
+.imgDivClass1:hover, .imgDivClass2:hover {
+    background-color: orange;
+}
+
+.driveButton {
+    height: 90px;
+    width: 90px;
+    font-weight: bold;
+    border-radius: 100px;
+    border: 1px solid blue;
+    /*background-color: orange;*/
+    float: right;
+    background-image: url("../images/car.png");
+}
+
