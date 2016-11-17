@@ -1,4 +1,7 @@
 
+
+
+
 $( document ).ready(function() {
 console.log("using yelpMain.js");
 
@@ -7,9 +10,11 @@ console.log("using yelpMain.js");
             var near; 
             var num;
 
-            $("body, html").animate({ 
-                        scrollTop: $('#mainNav').offset().top 
+             $("body, html").animate({ 
+                        scrollTop: $('#homeHeading').offset().top - 100
                     }, 100);
+
+           
 
 
         $('#getResults').on('click', function(){
@@ -113,8 +118,8 @@ console.log("using yelpMain.js");
 
 
                         var businessName = resultObject.id;
-                           // $(resultObject.id).addClass("bName");
-                           $(businessName).addClass("bName");
+                           $(resultObject.id).addClass("bName");
+                           //$(businessName).addClass("bName");
                            $(businessName).attr('data-name', i); 
 
                         
@@ -157,9 +162,6 @@ console.log("using yelpMain.js");
                       divArray[i].append(ratingImgDiv);
 
                       
-                     
-
-
                       locationDiv = $("<div class = 'textclass' >").append("Location: " + resultObject.location);
                       divArray[i].append(locationDiv);
 
@@ -175,7 +177,6 @@ console.log("using yelpMain.js");
                        $('#displayResults').append(divArray[i]);
 
     
-
                     //code for adding markers
                       var newPos = {
                         lat: resultObject.lat,
@@ -206,10 +207,10 @@ console.log("using yelpMain.js");
                 })
 
 
+
                 function clicklistener() 
 
                         {
-
                               $('.driveButton').on("click",function()
 
                               {
@@ -247,9 +248,6 @@ console.log("using yelpMain.js");
                                     console.log("you clicked on title");
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
                               });   
-
-
-
 
                         }
 
