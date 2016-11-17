@@ -216,13 +216,6 @@ console.log("using yelpMain.js");
                               {
                                 console.log("clicked on drive");
 
-                                var currentPos = {
-                                pos: {
-                                        lat: null,
-                                        lng: null
-                                  }  
-                                }
-
                                 var newLat = resultArray[$(this).attr("data-name")].lat;
                                 var newLng = resultArray[$(this).attr("data-name")].lng;
                                 console.log(newLat + "    " + newLng);
