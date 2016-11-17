@@ -118,8 +118,6 @@ console.log("using yelpMain.js");
 
 
                         var businessName = resultObject.id;
-                           $(resultObject.id).addClass("bName");
-                           //$(businessName).addClass("bName");
                            $(businessName).attr('data-name', i); 
 
                         
@@ -149,6 +147,7 @@ console.log("using yelpMain.js");
 
                      businessNameDiv.append(businessName);
                      divArray[i].append(businessNameDiv);
+                     businessNameDiv.attr('data-name', i);
 
                       imgDiv = $('<div >').append(image1);
                       divArray[i].append(imgDiv);
@@ -241,14 +240,15 @@ console.log("using yelpMain.js");
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
                               });   
 
+                          //    $( "#list" ).on( "click", "a", function( event )
 
-                             $('.bName').on("click",function()
+
+                             $('.titleDivClass').on("click",function()
 
                               {
                                     console.log("you clicked on title");
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
                               });   
-
                         }
 
  
