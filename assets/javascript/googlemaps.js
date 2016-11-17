@@ -8,7 +8,7 @@ var la = { //our map center.
 	pos: {lat: 34.060815, lng: -118.447205} //gayley building
 };
 
-var currentPos = {
+var currentPos = { //holds your coordinates for geolocation.
   pos: {
           lat: null,
           lng: null
@@ -18,11 +18,29 @@ var currentPos = {
 function initMap(newZip) { //initialize map the first time or center map if already initialized
   
   if (map == null) { //map not yet initialized, build new map.
-	 geocoder = new google.maps.Geocoder();
- 	 map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 10,
-		center: la.pos //default location so nothing breaks*-
-	 });
+	  geocoder = new google.maps.Geocoder();
+ 	  map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 10,
+		  center: la.pos, //default location so nothing breaks
+      mapTypeControl: true, //moved it so it doesn't interfere with our logo
+      mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          position: google.maps.ControlPosition.TOP_RIGHT
+      }
+    });
+
+   //this listener builds map markers on click. Not sure if we need this.
+    map.addListener('click', function(event) {
+      console.log("map hit");
+
+      var pos = {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng()
+      }
+
+      addNewMarker(pos, null);
+//    console.log( "map hit", pos);
+   });
 
   }
   else { //putting in new zip after map initialized
