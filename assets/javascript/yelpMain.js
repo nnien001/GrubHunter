@@ -111,10 +111,16 @@ console.log("using yelpMain.js");
                             resultObject.id = resultObject.id.toUpperCase();
 
 
+
+
+                        // var businessName = resultObject.id;
+                        // $(businessName).attr('data-name', i); 
+
                             var businessName = $("<div>");
                             businessName.text(resultObject.id);
                             businessName.addClass("bName");
                             businessName.attr('data-name', i);
+
 
                         
                         var image1 = $('<img class = "imgDivClass1">').attr('src', resultObject.resultImage);
@@ -138,14 +144,14 @@ console.log("using yelpMain.js");
                         
                       divArray[i] = $("<div class = 'outerDiv'>");
 
-                      businessNameDiv = $("<div class = 'titleDivClass'>").text((i + 1).toString() + ". ")
-                      // businessName.text((i + 1).toString() + ". ");
+                      // businessNameDiv = $("<div class = 'titleDivClass'>").text((i + 1).toString() + ". ")
+                      businessName.text((i + 1).toString() + ". ");
 
-                      businessNameDiv.append(businessName);
-                      divArray[i].append(businessNameDiv);
-                      businessNameDiv.attr('data-name', i);
+                      // businessNameDiv.append(businessName);
+                      // divArray[i].append(businessNameDiv);
+                      // businessNameDiv.attr('data-name', i);
 
-                      // divArray[i].append(businessName);
+                      divArray[i].append(businessName);
 
                       imgDiv = $('<div >').append(image1);
                       divArray[i].append(imgDiv);
