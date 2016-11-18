@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<title>Food Truck Tracker !</title>
 
@@ -9,8 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-	
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+    <link href="assets/theme/css/reset.css" rel="stylesheet">
+    <link href="assets/theme/css/bootstrap.css" rel="stylesheet">
 
     <link href="assets/theme/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -19,33 +21,21 @@
     <!-- Plugin CSS -->
     <link href="assets/theme/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
+    
     <!-- Theme CSS -->
     <link href="assets/theme/css/creative.css" rel="stylesheet">
     <link href="finetweaks.css" rel="stylesheet">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-	<!-- <link rel="stylesheet" type ="text/css" href="assets/css/reset.css">
-
-	<link rel="stylesheet" type ="text/css" href="assets/css/style.css">
- -->
-	<!-- Firebase Reference -->
-	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-	
-	
-	
 </head>
-<body>
- <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <img class="navbar-brand page-scroll logo" src="assets/theme/img/avatar.png">
 
-        <!-- /.container-fluid -->
-    </nav>
+
+<body>
+
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <img class="navbar-brand page-scroll logo" src="assets/theme/img/avatar.png">
+    </div>
+  </nav>
 
     <header>
         <div class="header-content">
@@ -54,13 +44,15 @@
                 <hr>
                 <p>Find food trucks near you and help your fellow foodies know where to go for their fix!</p>
                 <form id="find-form" class="form-group">
-                <label for="truck-input"> <strong>Find your food-truck</strong></label>
+                <label for="truck-input"> <strong>Enter your Zip for food trucks!</strong></label>
                 <input type="text" id="zipCodeInput">
                 <input id= "getResults" type="submit" value="Fooood!" class="btn btn-primary btn-xl page-scroll">
                 </form>
             </div>
+
+
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
+              <!-- Indicators -->
               <ol class="carousel-indicators">
                   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                   <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -76,47 +68,43 @@
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
-                  <div class="item active">
+                  <div class="item popup-gallery active">
                       <img class="pic" src="assets/images/purpleEats.jpg" alt="Chania">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/tacos.jpg" alt="Chania">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/blondie.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/burger.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/burrito.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/chicken.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/gyro.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/sandwich.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/slider.jpg" alt="Flower">
                   </div>
-                  <div class="item">
+                  <div class="item popup-gallery">
                       <img class="pic" src="assets/images/wachos.jpg" alt="Flower">
                   </div>
                   <!-- Left and right controls -->
                   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
                   </a>
                   <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
                   </a>
                 </div>
-        </div>
+            </div>
         </div>
     </header>
 
@@ -126,7 +114,26 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Brought to you by Team DAN!</h2>
                     <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                    <div class="row">
+                    <img class="team img-circle" src="assets/images/deonte.jpg" alt="deonte">
+                    <p class="text-faded">
+                      Deonte: Markup &amp; Styliing Manager
+                    </p>
+                    </div>
+
+                    <div class="row">
+                    <img class="team img-circle" src="assets/images/abdullah.jpg" alt="abdullah">
+                    <p class="text-faded">
+                      Abdullah: Chief Yelp Integration Officer
+                    </p>
+                    </div>
+
+                    <div class="row">
+                    <img class="team img-circle" src="assets/images/natthldr.png" alt="theoretical-natt">
+                    <p class="text-faded">
+                      Natt: Chief Google Integration Officer
+                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,5 +161,18 @@
     </section>
 
    
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"></script>
+
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+  
 </body>
+
 </html>
