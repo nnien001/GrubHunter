@@ -1,183 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Grub Hunter!</title>
 
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>Food Truck Tracker !</title>
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
- 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+    <link href="assets/theme/css/reset.css" rel="stylesheet">
+    <link href="assets/theme/css/bootstrap.css" rel="stylesheet">
 
-    <!-- Fonts -->
     <link href="assets/theme/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-
     <!-- Plugin CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/yelpStyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link href="assets/theme/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <!-- Main Theme CSS -->
-    <link href="assets/theme/css/creative.css" rel="stylesheet">
-    <!-- CSS Customizations -->
-    <link href="finetweaks.css" rel="stylesheet">
 
+    
+    <!-- Theme CSS -->
+    <link href="assets/theme/css/creative.css" rel="stylesheet">
+    <link href="finetweaks.css" rel="stylesheet">
 
 </head>
 
-<body>
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-            <img class="navbar-brand page-scroll logo" src="assets/theme/img/avatar.png">
-        </div>
-    </nav>
 
+<body>
+
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <img class="navbar-brand page-scroll logo" src="assets/theme/img/avatar.png">
+    </div>
+  </nav>
 
     <header>
-
         <div class="header-content">
             <div class="header-content-inner">
                 <h1 id="homeHeading">Feeling Hungry?</h1>
                 <hr>
-                <p class="description">Find food trucks near you and help your fellow foodies know where to go for their fix!</p>
+                <p>Find food trucks near you and help your fellow foodies know where to go for their fix!</p>
                 <form id="find-form" class="form-group">
-                    <label for="truck-input"> <strong>Enter your Zip for food trucks!</strong></label>
-                    <input type="text" id="zipCodeInput">
-                    <input id="getResults" type="submit" value="Fooood!" class="btn btn-primary btn-xl page-scroll">
+                <label for="truck-input"> <strong>Enter your Zip for food trucks!</strong></label>
+                <input type="text" id="zipCodeInput">
+                <input id= "getResults" type="submit" value="Fooood!" class="btn btn-primary btn-xl page-scroll">
                 </form>
             </div>
 
 
-            <div id="myCarousel" class="carousel slide row" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                    <li data-target="#myCarousel" data-slide-to="4"></li>
-                    <li data-target="#myCarousel" data-slide-to="5"></li>
-                    <li data-target="#myCarousel" data-slide-to="6"></li>
-                    <li data-target="#myCarousel" data-slide-to="7"></li>
-                    <li data-target="#myCarousel" data-slide-to="8"></li>
-                    <li data-target="#myCarousel" data-slide-to="9"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item popup-gallery  active">
-                        <img class="pic" src="assets/images/purpleEats.jpg" alt="Chania">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/tacos.jpg" alt="Chania">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/blondie.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/burger.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/burrito.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/chicken.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/gyro.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/sandwich.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/slider.jpg" alt="Flower">
-                    </div>
-                    <div class="item popup-gallery ">
-                        <img class="pic" src="assets/images/wachos.jpg" alt="Flower">
-                    </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
+                  <li data-target="#myCarousel" data-slide-to="5"></li>
+                  <li data-target="#myCarousel" data-slide-to="6"></li>
+                  <li data-target="#myCarousel" data-slide-to="7"></li>
+                  <li data-target="#myCarousel" data-slide-to="8"></li>
+                  <li data-target="#myCarousel" data-slide-to="9"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                  <div class="item popup-gallery active">
+                      <img class="pic" src="assets/images/purpleEats.jpg" alt="Chania">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/tacos.jpg" alt="Chania">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/blondie.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/burger.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/burrito.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/chicken.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/gyro.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/sandwich.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/slider.jpg" alt="Flower">
+                  </div>
+                  <div class="item popup-gallery">
+                      <img class="pic" src="assets/images/wachos.jpg" alt="Flower">
+                  </div>
+                  <!-- Left and right controls -->
+                  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  </a>
+                  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  </a>
                 </div>
             </div>
         </div>
-
     </header>
 
-
     <section class="bg-primary" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">
-                  Brought to you by Team DAN!
-                </h2>
-                <hr class="light">
-            </div>
+        <div class="container">
             <div class="row">
-                    <div class="col-lg-4">
-                        <img class="team img-circle" id="imgDeonte" src="assets/images/deonte.jpg" alt="deonte">
-                        <p class="text-faded">
-                            Deonte: Director of User Experience
-                        </p>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Brought to you by Team DAN!</h2>
+                    <hr class="light">
+                    <div class="row">
+                    <img class="team img-circle" src="assets/images/deonte.jpg" alt="deonte">
+                    <p class="text-faded">
+                      Deonte: Markup &amp; Styliing Manager
+                    </p>
                     </div>
-                    <div class="col-lg-4">
-                        <img class="team img-circle" src="assets/images/abdullah.jpg" alt="abdullah">
-                        <p class="text-faded">
-                            Abdullah: Chief Yelp Integration Officer
-                        </p>
-                </div>
-                    <div class="col-lg-4">
-                        <img class="team img-circle" src="assets/images/natthldr.jpg" alt="theoretical-natt">
-                        <p class="text-faded">
-                            Natt: Chief Google Integration Officer
-                        </p>
+
+                    <div class="row">
+                    <img class="team img-circle" src="assets/images/abdullah.jpg" alt="abdullah">
+                    <p class="text-faded">
+                      Abdullah: Chief Yelp Integration Officer
+                    </p>
+                    </div>
+
+                    <div class="row">
+                    <img class="team img-circle" src="assets/images/natthldr.png" alt="theoretical-natt">
+                    <p class="text-faded">
+                      Natt: Chief Google Integration Officer
+                    </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-    <div id="map"></div>
-    <div id="displayResults"></div>
-    
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-    <!-- Latest compiled and minified JavaScript -->
+   
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script
-        src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
-        integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
-        crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"></script>
 
-
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
-    <script type="text/javascript" src="assets/javascript/firebase.js"></script>
-
-    <script type="text/javascript" src="assets/javascript/googlemaps.js"></script>
     
-    <script type="text/javascript" src="assets/javascript/yelp1.js"></script>
-    <script type="text/javascript" src="assets/javascript/yelp2.js"></script>
-    <script type="text/javascript" src="assets/javascript/yelpMain.js"></script>
-
+    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
-    <script src="assets/theme/js/creative.js"></script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLaTDL2FZ7OHuViBsdUqtKSJZfaDVMavk"></script>    
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+  
 </body>
 
 </html>
