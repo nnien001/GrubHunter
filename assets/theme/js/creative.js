@@ -83,7 +83,7 @@ function doResize(event, ui) {
   );
   
   $el.css({
-    transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
+    transform: "scale(" + scale + ")"
   });
   
 }
@@ -99,12 +99,12 @@ doResize(null, starterData);
 $('.carousel-inner .item').each(function(){
   var next = $(this).next();
   var winWidth = $(window).width();
-  if (!next.length && winWidth <= 768) {
+  if (!next.length && winWidth >= 400) {
     next = $(this).siblings(':first');
   }
   next.children(':first-child').clone().appendTo($(this));
 
-  if (next.next().length>0 && winWidth <= 400) {
+  if (next.next().length>0 && winWidth >= 768) {
     next.next().children(':first-child').clone().appendTo($(this));
   }
   else {

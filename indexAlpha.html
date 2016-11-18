@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Food Truck Tracker !</title>
+    <title>Grub Hunter!</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +20,7 @@
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/yelpStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link href="assets/theme/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
     <!-- Main Theme CSS -->
     <link href="assets/theme/css/creative.css" rel="stylesheet">
@@ -69,34 +70,34 @@
                 </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item  active">
+                    <div class="item popup-gallery  active">
                         <img class="pic" src="assets/images/purpleEats.jpg" alt="Chania">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/tacos.jpg" alt="Chania">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/blondie.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/burger.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/burrito.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/chicken.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/gyro.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/sandwich.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/slider.jpg" alt="Flower">
                     </div>
-                    <div class="item ">
+                    <div class="item popup-gallery ">
                         <img class="pic" src="assets/images/wachos.jpg" alt="Flower">
                     </div>
                     <!-- Left and right controls -->
@@ -116,15 +117,46 @@
 
 
     <section class="bg-primary" id="about">
-        <div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">
+                  Brought to you by Team DAN!
+                </h2>
+                <hr class="light">
+            </div>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Brought to you by Team DAN!</h2>
-                    <hr class="light">
+                <div class="row sectionDAN">
+                    <div class="col-lg-12">
+                        <img class="team img-circle" id="imgDeonte" src="assets/images/deonte.jpg" alt="deonte">
+                        <p class="text-faded">
+                            Deonte: Director of User Experience
+                        </p>
+                    </div>
+                </div>
+                <div class="row sectionDAN">
+                    <div class="col-lg-12">
+                        <img class="team img-circle" src="assets/images/abdullah.jpg" alt="abdullah">
+                        <p class="text-faded">
+                            Abdullah: Chief Yelp Integration Officer
+                        </p>
+                    </div>
+                </div>
+                <div class="row sectionDAN">
+                    <div class="col-lg-12">
+                        <img class="team img-circle" src="assets/images/natthldr.jpg" alt="theoretical-natt">
+                        <p class="text-faded">
+                            Natt: Chief Google Integration Officer
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+
 
 
     <section id="contact">
@@ -154,14 +186,23 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script
+        src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+        integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+        crossorigin="anonymous">
+    </script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/firebase.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLaTDL2FZ7OHuViBsdUqtKSJZfaDVMavk&callback=initMap"></script>
+    <script type="text/javascript" src="assets/javascript/googlemaps.js"></script>
+    
     <script type="text/javascript" src="assets/javascript/yelp1.js"></script>
     <script type="text/javascript" src="assets/javascript/yelp2.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
-    <script type="text/javascript" src="assets/javascript/googlemaps.js"></script>
-    <script type="text/javascript" src="assets/javascript/firebase.js"></script>
     <script type="text/javascript" src="assets/javascript/yelpMain.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLaTDL2FZ7OHuViBsdUqtKSJZfaDVMavk&callback=initMap"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
