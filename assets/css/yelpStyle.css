@@ -5,7 +5,7 @@
                 /*text-transform: uppercase;*/
 	 			clear: left;
  				max-height: 280px;
- 				overflow: scroll;
+ 				overflow: auto;
                /* background-color: red;*/
                 background-color: white;
                /* color: white;*/
