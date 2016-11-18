@@ -113,15 +113,13 @@ console.log("using yelpMain.js");
 
 
 
-                        var businessName = resultObject.id;
-                        $(businessName).attr('data-name', i); 
+                        //var businessName = resultObject.id;
+                        //$(businessName).attr('data-name', i); 
 
-                            // var businessName = $("<div>");
-                            // businessName.text(resultObject.id);
-                            // businessName.addClass("bName");
-                            // businessName.attr('data-name', i);
-
-
+                         var businessName = $("<div>");
+                         businessName.text(resultObject.id);
+                         businessName.addClass("bName");
+                         businessName.attr('data-name', i);
                         
                         var image1 = $('<img class = "imgDivClass1">').attr('src', resultObject.resultImage);
                         image1.attr('data-name', i);  
