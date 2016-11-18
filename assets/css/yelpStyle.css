@@ -6,6 +6,10 @@
 	 			clear: left;
  				max-height: 280px;
  				overflow: scroll;
+               /* background-color: red;*/
+                background-color: white;
+               /* color: white;*/
+                color: black;
            }
 
 
@@ -16,10 +20,12 @@ body {
 .titleDivClass
 	{
 		font-weight: bold;
-		font-size: 18px;
+		color: white;
+		font-size: 20px;
 		margin: 10px;
-		background-color: orange;
-		line-height: 20px;
+		/*background-color:  #F08080;*/
+        background-color: red;
+		line-height: 25px;
 	}	
 
 .bName
@@ -62,11 +68,27 @@ body {
 .driveButton {
     height: 90px;
     width: 90px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 100px;
+    border: 2px solid white;
+    background-color: #FF8300;
+    float: right;
+    margin: 10px;
+}
+
+.infoButton {
+    height: 90px;
+    width: 90px;
+    color: black;
+    font-size: 15px;
     font-weight: bold;
     border-radius: 100px;
-    border: 1px solid blue;
-    /*background-color: orange;*/
+    border: 2px solid white;
+    background-color: yellow;
     float: right;
     background-image: url("../images/car.png");
+    margin: 10px;
 }
 

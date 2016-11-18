@@ -1,8 +1,8 @@
 
 
-
-
 $( document ).ready(function() {
+
+
 console.log("using yelpMain.js");
 
             var resultArray;
@@ -59,30 +59,27 @@ console.log("using yelpMain.js");
         
                 var parameterMap = OAuth.getParameterMap(message.parameters);
 
-                 console.log ("i'm before ajax");
-                    
 
                  $.ajax({
                     'url' : message.action,
                     'data' : parameterMap,
                     'dataType' : 'jsonp',
-                    'jsonpCallback' : 'cb',
                     'cache': true
                       })
 
                 .done(function(data, textStatus, jqXHR) {
                       // console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
-                       console.log(data);
-                       console.log("cb: " + JSON.stringify(data));
-                       console.log( "data : " + JSON.stringify(data.businesses.length));
-                       console.log( "data : " + JSON.stringify(data.businesses[0].rating));
-                       console.log( "data : " + JSON.stringify(data.businesses[0].location));
-                       console.log( "latitude : " + JSON.stringify(data.businesses[0].location.coordinate.latitude));
-                       console.log( "longitude : " + JSON.stringify(data.businesses[0].location.coordinate.longitude));
-                       console.log( "data : " + JSON.stringify(data.businesses[0].id));
-                       console.log( "data : " + JSON.stringify(data.businesses[0].price));
-                       console.log( "data : " + JSON.stringify(data.businesses[0].image_url));
-                       console.log( "data : " + JSON.stringify(data.businesses[0].rating_img_url));
+                       // console.log(data);
+                       // console.log("cb: " + JSON.stringify(data));
+                       // console.log( "data : " + JSON.stringify(data.businesses.length));
+                       // console.log( "data : " + JSON.stringify(data.businesses[0].rating));
+                       // console.log( "data : " + JSON.stringify(data.businesses[0].location));
+                       // console.log( "latitude : " + JSON.stringify(data.businesses[0].location.coordinate.latitude));
+                       // console.log( "longitude : " + JSON.stringify(data.businesses[0].location.coordinate.longitude));
+                       // console.log( "data : " + JSON.stringify(data.businesses[0].id));
+                       // console.log( "data : " + JSON.stringify(data.businesses[0].price));
+                       // console.log( "data : " + JSON.stringify(data.businesses[0].image_url));
+                       // console.log( "data : " + JSON.stringify(data.businesses[0].rating_img_url));
 
                       if (data.businesses.length <10 )
                       {
@@ -92,8 +89,6 @@ console.log("using yelpMain.js");
                       {
                         num = 10;
                       }
-
-                      console.log("i'm after cb data function");
 
                     for (var i = 0; i<num; i++)
                       {
@@ -121,12 +116,6 @@ console.log("using yelpMain.js");
                             businessName.addClass("bName");
                             businessName.attr('data-name', i);
 
-/*                        var businessName = resultObject.id;
-                           $(resultObject.id).addClass("bName");
-                           //$(businessName).addClass("bName");
-                           $(businessName).attr('data-name', i); 
-*/
-
                         
                         var image1 = $('<img class = "imgDivClass1">').attr('src', resultObject.resultImage);
                         image1.attr('data-name', i);  
@@ -137,34 +126,44 @@ console.log("using yelpMain.js");
                         image2.attr('data-name', i);
 
 
-                        var buttonDrive = $("<button class= 'driveButton'> Take me there!!! </button>") ;
+                        var buttonDrive = $("<button class= 'driveButton'> Take me there! </button>") ;
                         buttonDrive.attr('data-name', i); // Added a data-attribute
 
+                        var infolink = $("<button class= 'infoButton'> Find out more! </button>") ;
+                        infolink.attr('data-name',i);
 
+                       console.log( "URL : " + resultObject.link);
 
-                    console.log( "URL : " + resultObject.link);
+                       resultArray.push(resultObject);
+                        
+                      divArray[i] = $("<div class = 'outerDiv'>");
 
-                    resultArray.push(resultObject);
+                      businessNameDiv = $("<div class = 'titleDivClass'>").text((i + 1).toString() + ". ")
+                      // businessName.text((i + 1).toString() + ". ");
 
-                   //divArray[i] = $("<div class = 'titleDivClass'>").append(businessName);
+                      businessNameDiv.append(businessName);
+                      divArray[i].append(businessNameDiv);
+                      businessNameDiv.attr('data-name', i);
 
-                     divArray[i] = $("<div class = 'outerDiv'>");
-
-                     businessNameDiv = $("<div class = 'titleDivClass'>").text((i + 1).toString() + ". ")
-
-                     businessNameDiv.append(businessName);
-                     divArray[i].append(businessNameDiv);
+                      // divArray[i].append(businessName);
 
                       imgDiv = $('<div >').append(image1);
                       divArray[i].append(imgDiv);
 
-                       divArray[i].append(buttonDrive);
+                      divArray[i].append(buttonDrive);
+
+                      divArray[i].append(infolink);
 
                       ratingDiv = $("<div class = 'textclass' >").append("Rating: " + resultObject.rating);
                       divArray[i].append(ratingDiv);
 
                       ratingImgDiv = $("<div class = 'wrapping' >").append(image2);
                       divArray[i].append(ratingImgDiv);
+
+                      //$("strong").text("what ever you want")
+
+                      // var strongtext = $("strong").text("Location: ");
+                      // locationDiv = $("<div class = 'textclass' >").append(strongtext + resultObject.location);
 
                       
                       locationDiv = $("<div class = 'textclass' >").append("Location: " + resultObject.location);
@@ -232,20 +231,18 @@ console.log("using yelpMain.js");
                               }); 
 
 
-
-                              $('.imgDivClass1, .imgDivClass2').on("click",function()
+                              $('.imgDivClass1, .imgDivClass2, .bName').on("click",function()
 
                               {
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
                               });   
 
-
-                             $('.bName').on("click",function()
+                             $('.infoButton').on("click",function()
 
                               {
                                     console.log("you clicked on title");
                                     window.open(resultArray[$(this).attr("data-name")].link,'_blank');
-                              });   
+                              });
 
                         }
 
