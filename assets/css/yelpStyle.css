@@ -22,6 +22,11 @@ body {
 		line-height: 20px;
 	}	
 
+.bName
+	{
+		display: inline;
+	}
+
 
 .imgDivClass1 {
 
