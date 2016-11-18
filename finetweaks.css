@@ -4,6 +4,11 @@
 }
 
 
+.description {
+  border: 2px black;
+  text-shadow: -1px 0 #545454FF, 0 1px #545454FF, 1px 0 #545454FF, 0 -1px #545454FF;
+}
+
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
