@@ -126,7 +126,7 @@ aside {
     color: white;
   }
   .navbar-default.affix {
-    background-color: white;
+    background-color: transparent;
     border-color: rgba(34, 34, 34, 0.05);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
@@ -179,7 +179,7 @@ header .header-content .header-content-inner p {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
-  margin-bottom: 50px;
+  margin-bottom: 2%;
 }
 @media (min-width: 768px) {
   header {
@@ -187,11 +187,12 @@ header .header-content .header-content-inner p {
   }
   header .header-content {
     position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
+    top: 20%;
+    /*-webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    transform: translateY(-50%);*/
     padding: 0 50px;
+    max-width: 99.5%;
   }
   header .header-content .header-content-inner {
     max-width: 1000px;

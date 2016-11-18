@@ -3,8 +3,22 @@
 	height: 70px;
 }
 
-.pic {
-	max-height: 200px;
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    height: 270px;
+    width: 30%;
+    position: relative;
+    display: inline-block;
+    float: left;
+    padding: 1%;
+}
+
+.carousel-inner > .item :first-child {
+	margin-left: 5%;
 }
 
 #getResults {
@@ -13,4 +27,46 @@
 
 #zipCodeInput {
 	color: black;
+}
+
+#myCarousel {
+	margin-top: 6%;
+	position: relative;
+	bottom: 0;
+}
+
+#zipCodeInput {
+	color: black;
+}
+
+.carousel-inner .active.left {
+	left: -20%;
+}
+.carousel-inner .next {
+	left:  20%;
+}
+
+.team {
+	height: 180px;
+	width: 180px;
+	background-size: cover;
+	background-position: center;
+	float: left;
+	margin-left: -10%;
+}
+
+#imgDeonte {
+	background-position: left;
+}
+
+.carousel-control .glyphicon-chevron-right {
+	margin-right: -45%;
+}
+
+.carousel-control .glyphicon-chevron-left {
+	margin-left: -45%;
+}
+
+.sectionDAN {
+	margin-bottom: 2%;
 }
