@@ -78,6 +78,11 @@
 	margin-bottom: 2%;
 }
 
+.links img {
+	max-width: 70px;
+	max-height: 70px;
+}
+
 .social-row {
 	list-style: none;
 }
