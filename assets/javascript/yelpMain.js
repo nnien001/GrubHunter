@@ -25,6 +25,7 @@ console.log("using yelpMain.js");
 
                 // This line of code will grab the input from the textbox...
                 near = $('#zipCodeInput').val().trim();
+                $("form").trigger("reset");
 
                 initMap(near);
 
@@ -33,6 +34,7 @@ console.log("using yelpMain.js");
                 {
                     $('#displayResults').append(" Not a valid zip Code !");
                     near = 0;
+                    $("form").trigger("reset");
                 }
 
                 console.log(near);
@@ -183,6 +185,7 @@ console.log("using yelpMain.js");
                       divArray[i].append(phoneDiv);
                     
                        $('#displayResults').append(divArray[i]);
+                       $('#displayResults').show();
 
     
                     //code for adding markers

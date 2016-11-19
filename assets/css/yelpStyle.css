@@ -6,7 +6,7 @@
 	 			clear: left;
  				max-height: 280px;
  				overflow: auto;
-               /* background-color: red;*/
+               /* background-color: #e91616;*/
                 background-color: white;
                /* color: white;*/
                 color: black;
@@ -24,7 +24,7 @@ body {
 		font-size: 20px;
 		margin: 10px;
 		/*background-color:  #F08080;*/
-        background-color: red;
+        background-color: #e91616;
 		line-height: 25px;
 	}	
 
@@ -73,7 +73,7 @@ body {
     font-size: 15px;
     border-radius: 100px;
     border: 2px solid white;
-    background-color: #FF8300;
+    background-color: #E53D00;
     float: right;
     margin: 10px;
 }
@@ -81,12 +81,12 @@ body {
 .infoButton {
     height: 90px;
     width: 90px;
-    color: black;
+    color: white;
     font-size: 15px;
     font-weight: bold;
     border-radius: 100px;
     border: 2px solid white;
-    background-color: yellow;
+    background-color: #7F7F7FFF;
     float: right;
     background-image: url("../images/car.png");
     margin: 10px;

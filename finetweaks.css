@@ -3,10 +3,29 @@
 	height: 70px;
 }
 
-
 .description {
   border: 2px black;
-  text-shadow: -1px 0 #545454FF, 0 1px #545454FF, 1px 0 #545454FF, 0 -1px #545454FF;
+  text-shadow: -1px 0 #e91616, 0 1px #e91616, 1px 0 #e91616, 0 -1px #e91616;
+}
+
+.formDesc {
+  text-shadow: -1px 0 #545454, 0 1px #545454, 1px 0 #545454, 0 -1px #545454;
+
+}
+
+#getResults {
+	margin-left: -12px;
+	font-size: 12px;
+}
+
+#zipCodeInput {
+	color: black;
+}
+
+#myCarousel {
+	margin-top: 6%;
+	position: relative;
+	bottom: 0;
 }
 
 .img-responsive,
@@ -26,30 +45,23 @@
 	margin-left: 5%;
 }
 
-#getResults {
-	margin-left: -12px;
-	font-size: 12px;
-}
-
-#zipCodeInput {
-	color: black;
-}
-
-#myCarousel {
-	margin-top: 6%;
-	position: relative;
-	bottom: 0;
-}
-
-#zipCodeInput {
-	color: black;
-}
-
 .carousel-inner .active.left {
 	left: -20%;
 }
 .carousel-inner .next {
 	left:  20%;
+}
+
+.carousel-control .glyphicon-chevron-right {
+	margin-right: -45%;
+}
+
+.carousel-control .glyphicon-chevron-left {
+	margin-left: -45%;
+}
+
+.sectionDAN {
+	margin-bottom: 2%;
 }
 
 .team {
@@ -64,18 +76,6 @@
 
 #imgDeonte {
 	background-position: left;
-}
-
-.carousel-control .glyphicon-chevron-right {
-	margin-right: -45%;
-}
-
-.carousel-control .glyphicon-chevron-left {
-	margin-left: -45%;
-}
-
-.sectionDAN {
-	margin-bottom: 2%;
 }
 
 .links img {

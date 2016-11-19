@@ -28,6 +28,7 @@ function initMap(newZip) { //initialize map the first time or center map if alre
           position: google.maps.ControlPosition.TOP_RIGHT
       }
     });
+    $('#map').show();
 
    //this listener builds map markers on click. Not sure if we need this.
     map.addListener('click', function(event) {
