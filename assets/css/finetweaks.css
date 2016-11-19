@@ -34,7 +34,7 @@
 .thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-    max-height: 375px;
+    height: 270px;
     width: 30%;
     position: relative;
     display: inline-block;
