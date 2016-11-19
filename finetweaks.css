@@ -28,6 +28,7 @@
 
 #getResults {
 	margin-left: -10px;
+	font-size: 12px;
 }
 
 #zipCodeInput {
@@ -52,13 +53,14 @@
 }
 
 .team {
+	display: block;
 	height: 180px;
 	width: 180px;
 	background-size: cover;
 	background-position: center;
-	float: left;
-	margin-left: -10%;
+	margin: 0 auto;
 }
+
 
 #imgDeonte {
 	background-position: left;
@@ -74,4 +76,18 @@
 
 .sectionDAN {
 	margin-bottom: 2%;
+}
+
+.social-row {
+	list-style: none;
+}
+
+.social-row :first-child {
+	float: left;
+	margin-left: 10%;
+}
+
+.social-row :last-child {
+	float: left;
+	margin-right: 10%;
 }
